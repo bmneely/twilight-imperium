@@ -28,3 +28,4 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
+gem 'simple_form'

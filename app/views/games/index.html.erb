@@ -1,0 +1,10 @@
+<h1>All Games</h1>
+  <%= link_to "New Game", new_game_path, class: 'btn btn-success' %>
+<% @games.each do |game| %>
+  <div>
+    <%= link_to game.name, game_path(game) %>
+    <% if !game.started && !game.users.include?(current_user) %>
+      <%= link_to 'join_game', '#' %>
+    <% end %>
+  </div>
+<% end %>
