@@ -13,7 +13,9 @@
   <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
 </div>
 
-
-<% @game.players.each do |player| %>
-  <%= link_to player.user.name, [@game, player] %>
-<% end %>
+<br>
+<div class="container">
+  <% @game.players.each do |player| %>
+    <p><strong></strong><%= link_to player.user.name, [@game, player] %></strong></p>
+  <% end %>
+</div>
