@@ -2,10 +2,12 @@
   <%= @game.name %>
   <% if @game.started? %>
     <small>Game in progress</small>
-  <% else %>
+  <% elsif policy(@game).new_game? %>
+    new_game
     <%= link_to "Start Game", '#', class: 'btn btn-success' %>
   <% end %>
-  <br><small><%= @game.players.count %> playing out of <%= @game.max_players %> possible players <%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-sm btn-default' %></small></h1>
+  <br><small><%= @game.players.count %> playing out of <%= @game.max_players %> possible players
+   <% if policy(@game).new_game? %><%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-sm btn-default' %></small></h1><% end %>
 <div>
 
 </div>

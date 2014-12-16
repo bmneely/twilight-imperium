@@ -5,7 +5,7 @@
 <% @games.each do |game| %>
   <div>
     <h2><%= link_to game.name, game_path(game) %></h2>
-    <% if !game.started && !game.users.include?(current_user) %>
+    <% if current_user && !game.started && !game.users.include?(current_user) %>
       <%= link_to 'join_game', '#', class: 'btn btn-default' %>
     <% end %>
   </div>
