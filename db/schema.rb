@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216011134) do
+ActiveRecord::Schema.define(version: 20141216033339) do
 
   create_table "cards", force: true do |t|
     t.integer  "deck_id"
     t.integer  "player_id"
     t.string   "name"
-    t.string   "text"
+    t.text     "text",       limit: 255
     t.boolean  "discarded"
     t.datetime "created_at"
     t.datetime "updated_at"

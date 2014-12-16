@@ -1,5 +1,7 @@
 <h1>All Games</h1>
-  <%= link_to "New Game", new_game_path, class: 'btn btn-success' %>
+  <% if policy(Game).new_game? %>
+    <%= link_to "New Game", new_game_path, class: 'btn btn-success' %>
+  <% end %>
 <% @games.each do |game| %>
   <div>
     <h2><%= link_to game.name, game_path(game) %></h2>
