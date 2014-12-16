@@ -1,5 +1,5 @@
 class AddRoleToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :string, :roll
+    add_column :users, :roll, :string
   end
 end
