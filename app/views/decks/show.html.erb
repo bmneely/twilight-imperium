@@ -1,4 +1,14 @@
 <h1>Cards</h1>
+
+<% if policy(@deck).deal? %>
+  <%= link_to "Send 1 card to each player", game_deck_send_one_card_path(@deck.game, @deck), class: 'btn btn-danger', method: :post %>
+  <%= link_to "Send cards to a specific player", "#", class: 'btn btn-danger' %>
+  <%= link_to "Delt Cards", game_deck_dealt_path(@deck.game, @deck), class: 'btn btn-default'%>
+<% end %>
+<%= link_to "Discard Deck", game_deck_discards_path(@deck.game, @deck), class: 'btn btn-default'%>
+
+
+<h2>All Cards</h2>
 <% @deck.draw_deck.each do |card| %>
   <strong><%= card.name %></strong>
   <em><%= simple_format(card.text) %></em>

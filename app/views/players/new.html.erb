@@ -1,0 +1,6 @@
+<div class="container"><br>
+  <%= simple_form_for [@game, @player] do |f| %>
+    <%= f.collection_select :user_id, @users, :id, :name, include_blank: false %>
+    <%= f.submit "Add Player", class: 'btn btn-xs btn-success' %>
+  <% end %>
+</div>

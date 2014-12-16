@@ -1,0 +1,8 @@
+<h1><%= @player.user.name %></h1>
+
+<h2>Current Action Cards</h2>
+
+<% @player.cards.each do |card| %>
+  <strong><%= card.name %> </strong><%= link_to "Play card", play_game_player_card_path(@game, @player, card), method: :post %>
+  <em><%= simple_format(card.text) %></em>
+<% end %>
