@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       get :discards
       get :dealt
       post :send_one_card
+      get :send_to_player
+      post :dispatch_card
     end
     resources :players do
       resources :cards do
