@@ -15,7 +15,7 @@ class DecksController < ApplicationController
   def send_to_player
     @game = Game.find(params[:game_id])
     @deck = @game.deck
-    @players = @game.users
+    @players = @game.players
   end
 
   def dispatch_card
