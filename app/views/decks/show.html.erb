@@ -1,7 +1,7 @@
 <h1>Cards</h1>
 
 <% if policy(@deck).deal? %>
-  <%= link_to "Send 1 card to each player", game_deck_send_one_card_path(@deck.game, @deck), class: 'btn btn-danger', method: :post %>
+  <%= link_to "Send 1 card to each player", game_deck_send_one_card_path(@deck.game, @deck), class: 'btn btn-danger', method: :post, data: {confirm: "Are you sure?"} %>
   <%= link_to "Send cards to a specific player", game_deck_send_to_player_path(@deck.game, @deck), class: 'btn btn-danger' %>
   <%= link_to "Delt Cards", game_deck_dealt_path(@deck.game, @deck), class: 'btn btn-default'%>
 <% end %>
