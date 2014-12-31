@@ -9,4 +9,11 @@ class CardMailer < ActionMailer::Base
 
     mail(to: @user.email, subject: 'New Action Card')
   end
+
+  def deal_public_objective_email(game, public_objective)
+    @objective = public_objective
+    game.users.each do |user|
+      mail(to: user.email, subject: 'New Public Objective Reveal')
+    end
+  end
 end

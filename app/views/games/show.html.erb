@@ -8,16 +8,30 @@
   <% end %>
   <br><small><%= @game.players.count %> playing out of <%= @game.max_players %> possible players
    <% if policy(@game).new_game? %><%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-sm btn-default' %></small></h1><% end %>
-<div>
-
-</div>
-<div class="container">
   <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
-</div>
-
-<br>
 <div class="container">
-  <% @game.players.each do |player| %>
-    <p><strong></strong><%= link_to player.user.name, [@game, player] %></strong></p>
-  <% end %>
+  <div class="col-md-6">
+    <h2>Players</h2>
+    <% @game.players.each do |player| %>
+      <p><strong></strong><%= link_to player.user.name, [@game, player] %></strong></p>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+   <h2>
+     Public Objectives
+     <% if policy(@game).new_game? %>
+       <%= link_to "Reveal Objective", game_reveal_objective_path(@game), method: :post, class: 'btn btn-sm btn-default' %>
+     <% end %>
+   </h2>
+   
+   <% @game.public_objective_deck.revealed_objectives.each do |objective| %>
+     <div>
+       <small>
+         Stage <%= objective.stage %> Objective<br>
+         <%= objective.text %><br>
+         Victory Points: <%= objective.value %>
+       </small><br><br>
+     </div>
+   <% end %>
+  </div>
 </div>

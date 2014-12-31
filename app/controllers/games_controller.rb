@@ -22,4 +22,10 @@ class GamesController < ApplicationController
     end
   end
 
+  def reveal_objective
+    @game = Game.find(params[:game_id])
+    @game.public_objective_deck.reveal_objective
+
+    redirect_to @game
+  end
 end

@@ -1,6 +1,70 @@
 module BaseDeck
   extend ActiveSupport::Concern
 
+  def build_base_public_objective_deck
+    stage_one_objectives = []
+    stage_two_objectives = []
+
+    stage_one_objectives << "I control Mecatol Rex"
+    stage_one_objectives << "I have controlled Mecatol Rex the entire Strategy Phase and Action Phase of this round."
+    stage_one_objectives << "I control planets with a total influence greater than the player to my immediate right and greater than the player to my immediate left."
+    stage_one_objectives << "I control the planets needed to have at least three of each of the four technology specialties."
+    stage_one_objectives << "I have more than one Technology Advance in 3 different colors."
+    stage_one_objectives << "I have 3 Technology Advances of the same color."
+    stage_one_objectives << "I have Technology Advances in all 4 colors."
+    stage_one_objectives << "I have 5 Technology Advances."
+    stage_one_objectives << "All three of my Space Docks are on the board."
+    stage_one_objectives << "I won a Space Battle against at least 3 opposing ships in one system this turn."
+    stage_one_objectives << "I successfully invaded one planet containing at least 1 opposing Ground Force this turn."
+    stage_one_objectives << "I now spend 3 Command Counters from my Command and/or Strategy Allocation areas."
+    stage_one_objectives << "I now spend 10 resources."
+    stage_one_objectives << "I now spend 10 influence."
+    stage_one_objectives << "I now spend 10 resources or 10 influence."
+    stage_one_objectives << "I now spend 6 Trade Goods."
+    stage_one_objectives << "I now spend 4 Trade Goods, 3 resources, and 3 influence."
+
+    stage_two_objectives << ["I control all of the planets in the Home Systems of two other players (Win the game).", 1]
+    stage_two_objectives << ["I control 11 planets outside my Home System.", 3]
+    stage_two_objectives << ["I control 10 planets outside my Home System.", 2]
+    stage_two_objectives << ["I control planets with a combined total influence greater than the combined total influence of all the planets controlled by my two neighbors.", 3]
+    stage_two_objectives << ["I have at least 4 (non-fighter) ships in two different opponent’s Home Systems (Win the game).", 100]
+    stage_two_objectives << ["I control the Mecatol Rex system and all systems adjacent to it.", 3]
+    stage_two_objectives << ["I control the Mecatol Rex system and at least 3 systems adjacent to it.", 2]
+    stage_two_objectives << ["I control 18 planets outside my Home System.", 100]
+    stage_two_objectives << ["I successfully invaded two planets, each containing at least 1 opposing Ground Force, this turn.", 2]
+    stage_two_objectives << ["I destroyed an opponent’s Space Dock at the end of combat this turn.", 2]
+    stage_two_objectives << ["I won two Space Battles this turn, each in different systems and against at least 3 opposing ships.", 2]
+    stage_two_objectives << ["I now spend 6 Command Counters from my Command and/or Strategy Allocation areas.", 2]
+    stage_two_objectives << ["I have 5 Technology Advances of the same color.", 2]
+    stage_two_objectives << ["I have at least 9 Technology Advances.", 2]
+    stage_two_objectives << ["I now spend 12 Trade Goods.", 2]
+    stage_two_objectives << ["I now spend 20 resources.", 2]
+    stage_two_objectives << ["I now spend 20 influence.", 2]
+    stage_two_objectives << ["I now spend 20 resources or 20 influence.", 2]
+
+    stage_one_objectives.shuffle!
+    stage_two_objectives.shuffle!
+
+    6.times do
+      self.objective_cards.create(
+        text: stage_one_objectives.pop,
+        stage: 1,
+        value: 1,
+        revealed: false
+      )
+    end
+
+    4.times do
+      objective = stage_two_objectives.pop
+      self.objective_cards.create(
+      text: objective[0],
+      stage: 2,
+      value: objective[1],
+      revealed: false
+      )
+    end
+  end
+
   def build_base_deck
 
     self.cards.create(
@@ -491,7 +555,7 @@ module BaseDeck
     self.cards.create(
       name: "Strategic Shift",
       text: "Choose one Strategy Card.  No player may choose that Strategy Card this round.\nPlay: During the Strategy Phase, before the first player chooses a Strategy Card."
-    )  
+    )
 
     self.cards.create(
       name: "Secret Industrial Agent",
@@ -546,37 +610,37 @@ module BaseDeck
     self.cards.create(
       name: "Transport",
       text: "Choose a planet you control.  You may move up to three Ground Forces from the chosen planet to another planet you control.  A route that does not contain ships must exist between these two planets.\nPlay: as an action."
-    )  
+    )
 
     self.cards.create(
       name: "Temporary Stability",
       text: "Players may not play any Action Cards until the next Status Phase.  Any player may discard 3 Action Cards from his hand at any time to cancel this card.\nPlay: During the Strategy Phase before any players have chosen their Strategy Cards."
-    ) 
+    )
 
     self.cards.create(
       name: "Thugs",
       text: "Choose a player.  That player may not participate in the vote on a law or resolution for the remainder of this round.\nPlay: Before the first vote (with influence) is cast."
-    )  
+    )
 
     self.cards.create(
       name: "Trade Stop",
       text: "Break all trade agreements in play, including your own.\nPlay: During the Strategy Phase."
-    )  
+    )
 
     self.cards.create(
       name: "Usurper",
       text: "Play only if you control Mecatol Rex. Place this card on the Mecatol Rex system.  While this card is in play, you gain votes equal to twice the influence value of Mecatol Rex (instead of its normal influence value) even if it is exhausted.  Discard this card from play if you lose control of Mecatol Rex.\nPlay: During the Strategy Phase."
-    )  
+    )
 
     self.cards.create(
       name: "Unexpected Action",
       text: "Remove one of your Command Counters from the board and place it with your reinforcements.\nPlay: As an action."
-    )  
+    )
 
     self.cards.create(
       name: "Uprising",
       text: "Choose one non-Home system.  Exhaust each planet in that system, if able.\nPlay: As an action."
-    )  
+    )
 
     self.cards.create(
       name: "Voluntary Annexation",

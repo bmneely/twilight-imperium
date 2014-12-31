@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :games do
+    post :reveal_objective
     resources :decks do
       get :discards
       get :dealt
@@ -16,6 +17,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   root to: 'welcome#index'
 end
