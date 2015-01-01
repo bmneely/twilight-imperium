@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :games do
-    post :reveal_objective
+    member do
+      post :reveal_objective
+    end
+
+    resources :objective_cards do
+      get :mark_card_as_revealed
+    end
+
     resources :decks do
       get :discards
       get :dealt

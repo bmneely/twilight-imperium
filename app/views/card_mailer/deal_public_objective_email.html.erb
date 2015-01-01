@@ -4,11 +4,14 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <h1>A Public Objective has been revealed!</h1>
-  <p>
-    Stage <%= @objective.stage %> Objective<br>
-    <%= @objective.text %><br>
-    Victory Points: <%= @objective.value %>
-  </p>
+  <h1>Pick one (1) public objective to reveal!</h1>
+  <% @objectives.each do |objective| %>
+    <p>
+      Stage <%= objective[:card].stage %> Objective<br>
+      <%= objective[:card].text %><br>
+      Victory Points: <%= objective[:card].value %><br>
+      To reveal this public objective click here: <%= objective[:link] %>
+    </p>
+  <% end %>
 </body>
 </html>

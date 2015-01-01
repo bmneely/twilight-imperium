@@ -6,4 +6,8 @@ class Player < ActiveRecord::Base
   def name
     user.name
   end
+
+  def email
+    user.email
+  end
 end

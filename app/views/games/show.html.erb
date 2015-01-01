@@ -20,17 +20,23 @@
    <h2>
      Public Objectives
      <% if policy(@game).new_game? %>
-       <%= link_to "Reveal Objective", game_reveal_objective_path(@game), method: :post, class: 'btn btn-sm btn-default' %>
+
+       <div class="container">
+         <%= simple_form_for :game, url: :reveal_objective_game, :method => :post, game_id: @game.id do |f| %>
+         <%= f.submit "Send objective cards to: ", class: 'btn btn-sm btn-default' %>
+         <%= f.collection_select :players, @players, :id, :name, include_blank: false %>
+         <% end %>
+       </div>
+
      <% end %>
    </h2>
-   
+
    <% @game.public_objective_deck.revealed_objectives.each do |objective| %>
      <div>
-       <small>
-         Stage <%= objective.stage %> Objective<br>
-         <%= objective.text %><br>
-         Victory Points: <%= objective.value %>
-       </small><br><br>
+
+         Stage <%= objective.stage %><br>
+         <%= pluralize(objective.value, "Victory Point") %><br>
+         <%= objective.text %><br><br>
      </div>
    <% end %>
   </div>
