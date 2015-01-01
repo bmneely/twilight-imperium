@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+  <body>
+    <h1>New Public Objective!</h1>
+    <p>
+      Stage <%= @objective.stage %><br>
+      <%= pluralize(@objective.value, "Victory Point") %><br>
+      <%= @objective.text %><br>
+    </p>
+  </body>
+</html>

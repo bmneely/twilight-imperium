@@ -28,6 +28,7 @@ class GamesController < ApplicationController
     player = Player.find(game_params[:players])
     @game.public_objective_deck.reveal_objective(@game, player)
 
+    flash[:notice] = "Public Objective cards were dispacted to #{player.name}."    
     redirect_to @game
   end
 
