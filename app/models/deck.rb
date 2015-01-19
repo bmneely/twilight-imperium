@@ -1,9 +1,9 @@
 class Deck < ActiveRecord::Base
   include BaseDeck
-  
+
   belongs_to :game
   has_many :cards
-  
+
   after_create :build_base_deck
 
   validates :game, presence: true
@@ -25,6 +25,6 @@ class Deck < ActiveRecord::Base
   end
 
   def dealt_cards
-    cards.where.not(player: nil)
+    cards.where(discarded: nil)
   end
 end
