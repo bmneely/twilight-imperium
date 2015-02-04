@@ -8,7 +8,8 @@
 <%= link_to "Discard Deck", game_deck_discards_path(@deck.game, @deck), class: 'btn btn-default'%>
 
 
-<h2>All Cards</h2>
+<h2>Draw Deck</h2>
+<%= pluralize(@deck.draw_deck.count, 'card') %> left 
 <% @deck.draw_deck.each do |card| %>
   <strong><%= card.name %></strong>
   <em><%= simple_format(card.text) %></em>

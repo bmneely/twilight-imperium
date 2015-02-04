@@ -7,8 +7,12 @@
     <%= link_to "Start Game", '#', class: 'btn btn-success' %>
   <% end %>
   <br><small><%= @game.players.count %> playing out of <%= @game.max_players %> possible players
-   <% if policy(@game).new_game? %><%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-sm btn-default' %></small></h1><% end %>
-  <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
+   <% if policy(@game).new_game? %>
+    <%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-sm btn-default' %></small></h1>
+  <% end %>
+  <% if policy(@game).new_game? %>
+    <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
+  <% end %>
 <div class="container">
   <div class="col-md-6">
     <h2>Players</h2>
