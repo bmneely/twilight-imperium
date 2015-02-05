@@ -13,8 +13,12 @@ class PlayerPolicy
   def new?
     user.present? && user.admin?
   end
-  
+
   def create?
     user.present? && user.admin?
+  end
+
+  def update?
+    user.present? && user == player.user || user.present? && user.admin?
   end
 end

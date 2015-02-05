@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: decks
+#
+#  id         :integer          not null, primary key
+#  game_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Deck < ActiveRecord::Base
   include BaseDeck
 

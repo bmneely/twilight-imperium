@@ -17,6 +17,12 @@ Rails.application.routes.draw do
       post :dispatch_card
     end
     resources :players do
+      resource :race_sheet do
+        member do
+          post :increase_strategy_allocation
+        end
+      end
+      
       resources :cards do
         member do
           post :play

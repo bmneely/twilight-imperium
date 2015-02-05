@@ -1,0 +1,2 @@
+class RaceSheetsController < ApplicationController
+end

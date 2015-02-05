@@ -18,8 +18,11 @@
     <h2>Players</h2>
     <% @game.players.each do |player| %>
       <p>
-        <strong></strong><%= link_to player.user.name, [@game, player] %></strong>
-        <%= pluralize(player.cards.count, "action cards") %>
+        <h3>
+          <%= link_to player.user.name, [@game, player] %>
+          <small><%= pluralize(player.cards.count, "action cards") %></small>
+        </h3>
+        <%= render partial: "race_sheets/race_sheet", locals: { race_sheet: player.race_sheet, player: player } %>
       </p>
     <% end %>
   </div>

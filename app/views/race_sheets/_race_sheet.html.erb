@@ -1,0 +1,33 @@
+<table style="width:100%">
+  <tr>
+    <td>
+      <div>Strategy Allocation</div>
+      <% if policy(Player.new).update? %>
+        <%= link_to "Add", "#" %> <%= link_to "Remove", increase_strategy_allocation_game_player_race_sheet_path(@game, player) %>
+      <% end %>
+    </td>
+    <td>
+      <div>Fleet Supply</div>
+      <% if policy(Player.new).update? %>
+        <%= link_to "Add", "#" %> <%= link_to "Remove", "#" %>
+      <% end %>
+    </td>
+    <td>
+      <div>Command Pool</div>
+      <% if policy(Player.new).update? %>
+        <%= link_to "Add", "#" %> <%= link_to "Remove", "#" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= race_sheet.strategy_allocation %>
+    </td>
+    <td>
+      <%= race_sheet.command_pool %>
+    </td>
+    <td>
+      <%= race_sheet.command_pool %>
+    </td>
+  </tr>
+</table>

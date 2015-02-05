@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: objective_cards
+#
+#  id                       :integer          not null, primary key
+#  public_objective_deck_id :integer
+#  text                     :text
+#  stage                    :integer
+#  value                    :integer
+#  revealed                 :boolean
+#  created_at               :datetime
+#  updated_at               :datetime
+#
+
 class ObjectiveCard < ActiveRecord::Base
   belongs_to :public_objective_deck
 
