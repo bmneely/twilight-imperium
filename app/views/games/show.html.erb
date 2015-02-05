@@ -18,7 +18,7 @@
     <h2>Players</h2>
     <% @game.players.each do |player| %>
       <p><strong></strong><%= link_to player.user.name, [@game, player] %></strong></p>
-      Action Cards: <%= pluralize(player.cards, "cards") %>
+      Action Cards: <%= pluralize(player.cards.count, "cards") %>
     <% end %>
   </div>
   <div class="col-md-6">
