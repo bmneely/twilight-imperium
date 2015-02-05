@@ -16,9 +16,10 @@ class Player < ActiveRecord::Base
 
   def initialize_race_sheet
     race_sheet = RaceSheet.new
+    race_sheet.player_id = self.id
     race_sheet.strategy_allocation = 2
     race_sheet.command_pool = 3
     race_sheet.fleet_supply = 3
-    race_sheet.save
+    race_sheet.save!
   end
 end
