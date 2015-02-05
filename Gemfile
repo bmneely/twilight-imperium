@@ -39,3 +39,4 @@ gem 'devise'
 gem 'simple_form'
 gem 'figaro', '1.0'
 gem "pundit"
+gem 'annotate', '~> 2.6.5'

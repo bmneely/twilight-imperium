@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id          :integer          not null, primary key
+#  created_at  :datetime
+#  updated_at  :datetime
+#  started     :boolean          default(FALSE)
+#  name        :string(255)
+#  max_players :integer
+#
+
 require 'test_helper'
 
 class GameTest < ActiveSupport::TestCase
