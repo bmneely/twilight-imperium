@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205190936) do
+ActiveRecord::Schema.define(version: 20150206060940) do
 
   create_table "cards", force: true do |t|
     t.integer  "deck_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150205190936) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "seating_order"
   end
 
   create_table "public_objective_decks", force: true do |t|

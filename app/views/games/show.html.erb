@@ -16,7 +16,7 @@
 <div class="container">
   <div class="col-md-7">
     <h2>Players</h2>
-    <% @game.players.each do |player| %>
+    <% @game.players.order(seating_order: :desc).each do |player| %>
       <p>
         <h3>
           <%= link_to player.user.name, [@game, player] %>
