@@ -2,7 +2,7 @@
   <tr>
     <td>
       <strong>Strategy Allocation</strong>
-      <% if policy(Player.new).update? %>
+      <% if policy(player).update? %>
         <small>
           <%= link_to "Add", increase_strategy_allocation_game_player_race_sheet_path(@game, player), method: :post %>
           <%= link_to "Remove", decrease_strategy_allocation_game_player_race_sheet_path(@game, player), method: :post %>
@@ -11,7 +11,7 @@
     </td>
     <td>
       <strong>Fleet Supply</strong>
-      <% if policy(Player.new).update? %>
+      <% if policy(player).update? %>
         <small>
           <%= link_to "Add", increase_fleet_supply_game_player_race_sheet_path(@game, player), method: :post %>
           <%= link_to "Remove", decrease_fleet_supply_game_player_race_sheet_path(@game, player), method: :post %>
@@ -20,7 +20,7 @@
     </td>
     <td>
       <strong>Command Pool</strong>
-      <% if policy(Player.new).update? %>
+      <% if policy(player).update? %>
         <small>
           <%= link_to "Add", increase_command_pool_game_player_race_sheet_path(@game, player), method: :post %>
           <%= link_to "Remove", decrease_command_pool_game_player_race_sheet_path(@game, player), method: :post %>
