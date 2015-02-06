@@ -19,8 +19,6 @@ class PlayerPolicy
   end
 
   def update?
-    puts user.id
-    puts player.user
-    user.present? && user.id == player.user.id || user.present? && user.admin?
+    user.present? && player.user && user.id == player.user.id || user.present? && user.admin?
   end
 end
