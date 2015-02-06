@@ -20,9 +20,15 @@ Rails.application.routes.draw do
       resource :race_sheet do
         member do
           post :increase_strategy_allocation
+          post :increase_command_pool
+          post :increase_fleet_supply
+
+          post :decrease_strategy_allocation
+          post :decrease_command_pool
+          post :decrease_fleet_supply
         end
       end
-      
+
       resources :cards do
         member do
           post :play

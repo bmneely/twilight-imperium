@@ -14,7 +14,7 @@
     <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
   <% end %>
 <div class="container">
-  <div class="col-md-6">
+  <div class="col-md-7">
     <h2>Players</h2>
     <% @game.players.each do |player| %>
       <p>
@@ -23,10 +23,10 @@
           <small><%= pluralize(player.cards.count, "action cards") %></small>
         </h3>
         <%= render partial: "race_sheets/race_sheet", locals: { race_sheet: player.race_sheet, player: player } %>
-      </p>
+      </p><br>
     <% end %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
    <h2>
      Public Objectives
      <% if policy(@game).new_game? %>
