@@ -21,10 +21,10 @@
     <td>
       <strong>Command Pool</strong>
       <% if policy(Player.new).update? %>
-        <strong>
+        <small>
           <%= link_to "Add", increase_command_pool_game_player_race_sheet_path(@game, player), method: :post %>
           <%= link_to "Remove", decrease_command_pool_game_player_race_sheet_path(@game, player), method: :post %>
-        </strong>
+        </small>
       <% end %>
     </td>
   </tr>
