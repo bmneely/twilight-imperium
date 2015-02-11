@@ -13,6 +13,7 @@
   <% if policy(@game).new_game? %>
     <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
   <% end %>
+  <%= link_to "Discard Deck", game_deck_discards_path(@game, @game.deck), class: 'btn btn-default'%>
 </h1>
 <div class="container">
   <div class="col-md-7">
