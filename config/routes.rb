@@ -19,10 +19,12 @@ Rails.application.routes.draw do
     resources :players do
       resource :race_sheet do
         member do
+          post :increase_trade_goods
           post :increase_strategy_allocation
           post :increase_command_pool
           post :increase_fleet_supply
 
+          post :decrease_trade_goods
           post :decrease_strategy_allocation
           post :decrease_command_pool
           post :decrease_fleet_supply

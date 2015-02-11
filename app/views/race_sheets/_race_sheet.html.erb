@@ -1,3 +1,8 @@
+Trade Goods: <%= race_sheet.trade_goods %>
+<small>
+  <%= link_to "Add", increase_trade_goods_game_player_race_sheet_path(@game, player), method: :post %>
+  <%= link_to "Remove", decrease_trade_goods_game_player_race_sheet_path(@game, player), method: :post %>
+</small>
 <table style="width:100%">
   <tr>
     <td>
