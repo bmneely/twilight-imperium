@@ -15,4 +15,10 @@
 class Card < ActiveRecord::Base
   belongs_to :deck
   belongs_to :player
+
+  def play_card
+    self.discarded = true
+    self.player = nil
+    self.save!
+  end
 end
