@@ -2,8 +2,10 @@ class PlayersController < ApplicationController
   after_action :verify_authorized
 
   def show
-    @game = Player.find(params[:game_id])
+    @game = Game.find(params[:game_id])
     @player = Player.find(params[:id])
+    @players = @game.players
+    @players = @players.reject{|p| p == @player}
     authorize @player
   end
 

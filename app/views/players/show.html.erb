@@ -3,6 +3,12 @@
 
 <h2>Current Action Cards</h2>
 <% @player.cards.each do |card| %>
-  <strong><%= card.name %> </strong><%= link_to "Play/Discard card", play_game_player_card_path(@game, @player, card), method: :post %>
+  <strong><%= card.name %> </strong><%#= link_to "Play/Discard card", play_game_player_card_path(@game, @player, card), method: :post %>
+
+  <%= simple_form_for([@game, @player, card]) do |f| %>
+    <%= f.collection_select :player_id, @players, :id, :name, include_blank: false %>
+    <%= f.submit "Give Card", class: 'btn btn-xs btn-success' %>
+  <% end %>
+
   <em><%= simple_format(card.text) %></em>
 <% end %>

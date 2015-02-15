@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @sender.name %> has given you <%= @card.name %></h1>
+    <p>
+      <strong><%= @card.name %></strong>
+      <em><%= simple_format(@card.text) %></em>
+
+    </p>
+    <p>
+      To view or play your card just follow this link: <%= @link %>.
+    </p>
+  </body>
+</html>
