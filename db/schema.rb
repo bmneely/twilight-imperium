@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206060940) do
+ActiveRecord::Schema.define(version: 20150215201739) do
 
   create_table "cards", force: true do |t|
     t.integer  "deck_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150206060940) do
     t.boolean  "revealed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "player_ids",               default: "--- []\n"
   end
 
   create_table "players", force: true do |t|

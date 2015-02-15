@@ -1,0 +1,11 @@
+<div>
+  <strong>Stage <%= objective.stage %></strong>
+  <% if policy(objective).claim? %>
+    <small><%= link_to "Claim", game_objective_card_claim_path(@game, objective), method: :post %></small>
+  <% end %>
+  <div>
+    Claimed: <em><%= objective.claiming_players %></em><br>
+    <%= pluralize(objective.value, "Victory Point") %><br>
+    <%= objective.text %><br><br>
+  </div>
+</div>

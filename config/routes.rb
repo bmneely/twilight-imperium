@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
     resources :objective_cards do
       get :mark_card_as_revealed
+      post :claim
     end
 
     resources :decks do

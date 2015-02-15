@@ -44,11 +44,7 @@
    </h2>
 
    <% @game.public_objective_deck.revealed_objectives.each do |objective| %>
-     <div>
-       Stage <%= objective.stage %><br>
-       <%= pluralize(objective.value, "Victory Point") %><br>
-       <%= objective.text %><br><br>
-     </div>
+     <%= render partial: "objective_cards/revealed_objective", locals: { objective: objective } %>
    <% end %>
   </div>
 </div>

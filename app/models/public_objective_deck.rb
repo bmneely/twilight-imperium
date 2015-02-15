@@ -13,6 +13,7 @@ class PublicObjectiveDeck < ActiveRecord::Base
   belongs_to :game
   has_many :objective_cards
 
+
   after_create :build_base_public_objective_deck
 
   def reveal_objective(game, player)
