@@ -20,7 +20,13 @@ class Deck < ActiveRecord::Base
 
   def deal_card(player)
     card = draw_deck.sample
-    card.player_id = player.id
+
+    if !card
+      discard_deck.update_all(discarded: false)
+      card = draw_deck.sample
+    end
+
+    card.player = player
     card.save!
 
     CardMailer.deal_card_email(player, game, card).deliver
