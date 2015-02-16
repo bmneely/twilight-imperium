@@ -17,6 +17,18 @@ class Player < ActiveRecord::Base
     user.email
   end
 
+  def make_speaker
+    old_speaker = game.speaker
+    
+    if old_speaker
+      old_speaker.is_speaker = false
+      old_speaker.save!
+    end
+
+    self.is_speaker = true
+    self.save!
+  end
+
   def victory_points
     vp = 0
     claimed_objectives.each do |claimed_objective|

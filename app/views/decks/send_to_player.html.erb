@@ -1,6 +1,6 @@
 <div class="container"><br>
 <%= simple_form_for :player_card, url: :game_deck_dispatch_card, :method => :post do |f| %>
-    <%= f.collection_select :player_id, @players, :id, :name, include_blank: false %>
-    <%= f.submit "Send Card", class: 'btn btn-xs btn-success' %>
-  <% end %>
+  <%= f.collection_select :player_id, @players, :id, :name, include_blank: false %>
+  <%= f.submit "Send Card", class: 'btn btn-xs btn-success' %>
+<% end %>
 </div>

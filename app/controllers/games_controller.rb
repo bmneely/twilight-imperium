@@ -1,4 +1,14 @@
 class GamesController < ApplicationController
+
+  def switch_speaker
+    @game = Game.find(params[:game_id])
+    player = Player.find(params.require(:player_speaker).permit(:player_id)[:player_id])
+    player.make_speaker
+
+    flash[:notice] = "#{player.name} was made Speaker"
+    redirect_to @game
+  end
+
   def index
     @games = Game.all
   end
@@ -28,7 +38,7 @@ class GamesController < ApplicationController
     player = Player.find(game_params[:players])
     @game.public_objective_deck.reveal_objective(@game, player)
 
-    flash[:notice] = "Public Objective cards were dispacted to #{player.name}."    
+    flash[:notice] = "Public Objective cards were dispacted to #{player.name}."
     redirect_to @game
   end
 

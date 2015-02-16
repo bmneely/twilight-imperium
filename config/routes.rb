@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :games do
+    post :switch_speaker
     member do
       post :reveal_objective
     end

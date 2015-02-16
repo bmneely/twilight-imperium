@@ -22,6 +22,9 @@ class Game < ActiveRecord::Base
   validates :name, presence: true
   validates :max_players, presence: true
 
+  def speaker
+    players.where(is_speaker: true).first
+  end
 
   def new_deck
     self.deck = Deck.create

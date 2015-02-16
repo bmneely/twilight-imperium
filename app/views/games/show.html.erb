@@ -7,13 +7,17 @@
     <%= link_to "Start Game", '#', class: 'btn btn-success' %>
   <% end %>
   <br><small><%= @game.players.count %> playing out of <%= @game.max_players %> possible players</small>
-   <% if policy(@game).new_game? %>
-    <%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-default' %>
-  <% end %>
-  <% if policy(@game).new_game? %>
-    <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
-  <% end %>
-  <%= link_to "Discard Deck", game_deck_discards_path(@game, @game.deck), class: 'btn btn-default'%>
+  <div>
+    <%= link_to "Discard Deck", game_deck_discards_path(@game, @game.deck), class: 'btn btn-default'%>
+    <% if policy(@game).new_game? %>
+      <%= link_to "Add Player", new_game_player_path(@game), class: 'btn btn-default' %>
+      <%= link_to "Game Deck", [@game, @game.deck], class: 'btn btn-danger' %>
+      <%= simple_form_for :player_speaker, url: game_switch_speaker_path(@game), :method => :post do |f| %>
+        <%= f.collection_select :player_id, @players, :id, :name, include_blank: false %>
+        <%= f.submit "Make speaker", class: 'btn btn-success' %>
+      <% end %>
+    <% end %>
+  </div>
 </h1>
 <div class="container">
   <div class="col-md-7">
@@ -21,7 +25,7 @@
     <% @game.players.order(:seating_order).each do |player| %>
       <p>
         <h3>
-          <%= link_to player.user.name, [@game, player] %> - <%= player.victory_points %> VP<br>
+          <%= fa_icon("star") if player.is_speaker? %></i> <%= link_to player.user.name, [@game, player] %> - <%= player.victory_points %> VP<br>
           <small><%= pluralize(player.cards.count, "action cards") %></small>
         </h3>
         <%= render partial: "race_sheets/race_sheet", locals: { race_sheet: player.race_sheet, player: player } %>
