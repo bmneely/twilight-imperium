@@ -11,13 +11,18 @@
 #
 
 class Game < ActiveRecord::Base
+  include BaseStrategyCards
+
   has_many :players
   has_one :deck
   has_one :public_objective_deck
+  has_many :strategy_cards
 
   has_many :users, :through => :players
 
   after_create :new_deck
+  after_create :generate_strategy_cards
+
 
   validates :name, presence: true
   validates :max_players, presence: true

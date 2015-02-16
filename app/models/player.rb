@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   belongs_to :game
   has_many :cards
   has_one :race_sheet
+  has_one :strategy_card
 
   has_many :claimed_objectives
   has_many :objective_cards, :through => :claimed_objectives
@@ -19,7 +20,7 @@ class Player < ActiveRecord::Base
 
   def make_speaker
     old_speaker = game.speaker
-    
+
     if old_speaker
       old_speaker.is_speaker = false
       old_speaker.save!

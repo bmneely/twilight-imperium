@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  belongs_to: 
+  references: 
+  name: MyString
+  primary: MyText
+  secondary: MyText
+  order: 1
+
+two:
+  belongs_to: 
+  references: 
+  name: MyString
+  primary: MyText
+  secondary: MyText
+  order: 1

@@ -6,6 +6,12 @@ Rails.application.routes.draw do
       post :reveal_objective
     end
 
+    resources :strategy_cards, only: [:index] do
+      collection do
+        post :reset
+      end
+    end
+
     resources :objective_cards do
       get :mark_card_as_revealed
       post :claim
@@ -38,6 +44,12 @@ Rails.application.routes.draw do
           post :play
         end
       end
+    end
+  end
+
+  resources :players, only: [] do
+    resources :strategy_cards, only: [] do
+      post :claim
     end
   end
 

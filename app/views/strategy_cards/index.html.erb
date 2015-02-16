@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Strategy Cards
+    <% if policy(@game).new_game? %>
+      <%= link_to "Reset ", reset_game_strategy_cards_path(@game), method: :post, class: 'btn btn-success' %>
+    <% end %>
+  </h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Player</th>
+      <th>Primary</th>
+      <th>Secondary</th>
+      <th>Bonuses</th>
+    </tr>
+    <% @strategy_cards.order(:order).each do |strategy_card| %>
+      <tr>
+        <td><%= strategy_card.name %></td>
+        <% if strategy_card.player %>
+          <td><%= strategy_card.player.name %></td>
+        <% else %>
+          <td><%= link_to("Claim Card", player_strategy_card_claim_path(current_player(@game), strategy_card), method: :post, class: 'btn btn-success') %></td>
+        <% end %>
+        <td><%= strategy_card.primary %></td>
+        <td><%= strategy_card.secondary %></td>
+        <td><%= strategy_card.bonuses %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

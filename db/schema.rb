@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216012856) do
+ActiveRecord::Schema.define(version: 20150216050559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,18 @@ ActiveRecord::Schema.define(version: 20150216012856) do
   end
 
   add_index "race_sheets", ["player_id"], name: "index_race_sheets_on_player_id", using: :btree
+
+  create_table "strategy_cards", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.string   "name"
+    t.text     "primary"
+    t.text     "secondary"
+    t.integer  "order"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "bonuses",    default: 0
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
