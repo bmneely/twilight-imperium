@@ -29,7 +29,7 @@ module BaseStrategyCards
 
     self.strategy_cards.create(
       name: "Production",
-      primary: "Receive 3 Command Counters from your reinforcements. You may then use this card’s secondary ability.",
+      primary: "Build in one of your systems with a space dock, receiving 2 free resources. This does not activate the planet, and you can build even if the planet is already activated.",
       secondary: "You may spend influence to purchase up to 3 command counters. 1 Command counter costs 2 influence.",
       order: 4
     )
