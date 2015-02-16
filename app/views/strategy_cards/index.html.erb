@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Strategy Cards
-    <% if policy(@game).new_game? %>
+    <% if policy(StrategyCard.new).reset? %>
       <%= link_to "Reset ", reset_game_strategy_cards_path(@game), method: :post, class: 'btn btn-success' %>
     <% end %>
   </h1>
@@ -17,8 +17,10 @@
         <td><%= strategy_card.name %></td>
         <% if strategy_card.player %>
           <td><%= strategy_card.player.name %></td>
+        <% elsif policy(strategy_card).claim? %>
+            <td><%= link_to("Claim Card", player_strategy_card_claim_path(current_player(@game), strategy_card), method: :post, class: 'btn btn-success') %></td>
         <% else %>
-          <td><%= link_to("Claim Card", player_strategy_card_claim_path(current_player(@game), strategy_card), method: :post, class: 'btn btn-success') %></td>
+          <td></td>
         <% end %>
         <td><%= strategy_card.primary %></td>
         <td><%= strategy_card.secondary %></td>
