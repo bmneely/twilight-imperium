@@ -15,7 +15,8 @@
 class ObjectiveCard < ActiveRecord::Base
   belongs_to :public_objective_deck
 
-  serialize :player_ids, Array
+  has_many :claimed_objectives
+  has_many :players, :through => :claimed_objectives
 
   def reveal_card
     self.revealed = true
@@ -29,13 +30,6 @@ class ObjectiveCard < ActiveRecord::Base
     player_ids.each do |player_id|
       claiming_players_names << Player.find(player_id).name
     end
-    puts "AADFDDF"
-    puts "AADFDDF"
-    puts "AADFDDF"
-    puts player_ids
-    puts claiming_players_names
-    puts "AADFDDF"
-    puts "AADFDDF"
 
     claiming_players_names.join(", ")
   end

@@ -21,7 +21,7 @@
     <% @game.players.order(:seating_order).each do |player| %>
       <p>
         <h3>
-          <%= link_to player.user.name, [@game, player] %>
+          <%= link_to player.user.name, [@game, player] %> - <%= player.victory_points %> VP<br>
           <small><%= pluralize(player.cards.count, "action cards") %></small>
         </h3>
         <%= render partial: "race_sheets/race_sheet", locals: { race_sheet: player.race_sheet, player: player } %>

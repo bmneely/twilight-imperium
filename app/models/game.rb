@@ -23,7 +23,7 @@ class Game < ActiveRecord::Base
   validates :max_players, presence: true
 
 
-  def new_decks
+  def new_deck
     self.deck = Deck.create
     self.deck.save!
     self.public_objective_deck = PublicObjectiveDeck.create

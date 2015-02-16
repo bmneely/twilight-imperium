@@ -12,8 +12,9 @@ class ObjectiveCardsController < ApplicationController
     @game = Game.find(params[:game_id])
     obj_card = ObjectiveCard.find(params[:objective_card_id])
     player = current_player(@game, current_user)
-    obj_card.player_ids << player.id
-    obj_card.save!
+    claimed_obj = player.claimed_objectives.build(objective_card_id: obj_card.id, player_id: player.id)
+    player.save!
+
     flash[:notice] = "Public objective claim"
     redirect_to @game
   end

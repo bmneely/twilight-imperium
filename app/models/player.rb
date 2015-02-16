@@ -4,6 +4,9 @@ class Player < ActiveRecord::Base
   has_many :cards
   has_one :race_sheet
 
+  has_many :claimed_objectives
+  has_many :objective_cards, :through => :claimed_objectives
+
   after_create :initialize_race_sheet
 
   def name
@@ -12,6 +15,15 @@ class Player < ActiveRecord::Base
 
   def email
     user.email
+  end
+
+  def victory_points
+    vp = 0
+    claimed_objectives.each do |claimed_objective|
+      vp += claimed_objective.objective_card.value
+    end
+
+    vp
   end
 
   def initialize_race_sheet
