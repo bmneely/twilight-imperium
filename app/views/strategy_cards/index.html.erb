@@ -12,7 +12,7 @@
       <th>Secondary</th>
       <th>Bonuses</th>
     </tr>
-    <% @strategy_cards.order(:order).each do |strategy_card| %>
+    <% @strategy_cards.order(:turn_order).each do |strategy_card| %>
       <tr>
         <td><%= strategy_card.name %></td>
         <% if strategy_card.player %>
