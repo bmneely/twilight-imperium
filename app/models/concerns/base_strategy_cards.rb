@@ -30,7 +30,7 @@ module BaseStrategyCards
     self.strategy_cards.create(
       name: "Production",
       primary: "Build in one of your systems with a space dock, receiving 2 free resources. This does not activate the planet, and you can build even if the planet is already activated.",
-      secondary: "You may spend influence to purchase up to 3 command counters. 1 Command counter costs 2 influence.",
+      secondary: "Spend 1 CC from your strategy allocation area to move up to two of your ships from unactivated systems into any adjacent systems you control. This does not activate the destination system(s).",
       order: 4
     )
 
