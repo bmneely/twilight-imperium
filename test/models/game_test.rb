@@ -5,8 +5,8 @@
 #  id          :integer          not null, primary key
 #  created_at  :datetime
 #  updated_at  :datetime
-#  started     :boolean          default(FALSE)
-#  name        :string(255)
+#  started     :boolean          default("false")
+#  name        :string
 #  max_players :integer
 #
 

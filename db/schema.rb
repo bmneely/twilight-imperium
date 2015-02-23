@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216050559) do
+ActiveRecord::Schema.define(version: 20150223200216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150216050559) do
   create_table "cards", force: :cascade do |t|
     t.integer  "deck_id"
     t.integer  "player_id"
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.text     "text"
-    t.boolean  "discarded",              default: false
+    t.boolean  "discarded",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20150216050559) do
   create_table "games", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "started",                 default: false
-    t.string   "name",        limit: 255
+    t.boolean  "started",     default: false
+    t.string   "name"
     t.integer  "max_players"
   end
 
@@ -99,31 +99,31 @@ ActiveRecord::Schema.define(version: 20150216050559) do
     t.string   "name"
     t.text     "primary"
     t.text     "secondary"
-    t.integer  "order"
+    t.integer  "turn_order"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "bonuses",    default: 0
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                   limit: 255
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "name"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "roll",                   limit: 255
+    t.string   "roll"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

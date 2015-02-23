@@ -35,7 +35,7 @@ module BaseStrategyCards
     )
 
     self.strategy_cards.create(
-      name: "Leadership",
+      name: "Trade",
       primary: "Receive 3 TG or cancel up to 2 trade agreements. Then all players receive TG from their trade agreements. Other players receive 1 fewer total TG. Finally, open trade negotiations among all players. You must approve all new trade agreements.",
       secondary: "",
       order: 5

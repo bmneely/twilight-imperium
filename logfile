@@ -1,0 +1,11 @@
+LOG:  database system was shut down at 2015-02-23 12:58:32 MST
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 73438) running in data directory "/usr/local/var/postgres"?
+ERROR:  syntax error at or near "order" at character 97
+STATEMENT:  SELECT "strategy_cards".* FROM "strategy_cards" WHERE "strategy_cards"."game_id" = $1  ORDER BY order ASC
+ERROR:  syntax error at or near "order" at character 97
+STATEMENT:  SELECT "strategy_cards".* FROM "strategy_cards" WHERE "strategy_cards"."game_id" = $1  ORDER BY order
+ERROR:  relation "strategy_card" does not exist
+STATEMENT:  ALTER TABLE "strategy_card" RENAME COLUMN "order" TO "turn_order"

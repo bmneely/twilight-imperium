@@ -5,9 +5,9 @@
 #  id         :integer          not null, primary key
 #  deck_id    :integer
 #  player_id  :integer
-#  name       :string(255)
-#  text       :text(255)
-#  discarded  :boolean          default(FALSE)
+#  name       :string
+#  text       :text
+#  discarded  :boolean          default("false")
 #  created_at :datetime
 #  updated_at :datetime
 #

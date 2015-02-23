@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: players
+#
+#  id            :integer          not null, primary key
+#  game_id       :integer
+#  user_id       :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  seating_order :integer
+#  is_speaker    :boolean
+#
+
 class Player < ActiveRecord::Base
   belongs_to :user
   belongs_to :game
