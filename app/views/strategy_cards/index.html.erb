@@ -24,7 +24,13 @@
         <% end %>
         <td><%= strategy_card.primary %></td>
         <td><%= strategy_card.secondary %></td>
-        <td><%= strategy_card.bonuses %></td>
+        <td>
+          <%= strategy_card.bonuses %>
+          <% if policy(StrategyCard.new).reset? %>
+            <br><%= link_to "Add Bonus", add_bonus_game_strategy_card_path(@game, strategy_card), method: :post, class: 'btn btn-default btn-xs' %>
+            <%= link_to "Clear Bonuses", clear_bonuses_game_strategy_card_path(@game, strategy_card), method: :post, class: 'btn btn-default btn-xs' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

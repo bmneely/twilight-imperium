@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       collection do
         post :reset
       end
+      member do
+        post :add_bonus
+        post :clear_bonuses
+      end
     end
 
     resources :objective_cards do
